@@ -39,6 +39,11 @@ public struct Result<TError>
     public TError? Error { get; } = default;
 
     public bool IsOk() => Error is null;
+
+    public static implicit operator TError(Result<TError> result)
+    {
+        return result.Error!;
+    }
 }
 
 public struct Result<TError, TValue>
@@ -58,4 +63,13 @@ public struct Result<TError, TValue>
 
     public TValue? Value { get; } = default;
     public TError? Error { get; } = default;
+    public static implicit operator TValue(Result<TError, TValue> result)
+    {
+        return result.Value!;
+    }
+
+    public static implicit operator TError(Result<TError, TValue> result)
+    {
+        return result.Error!;
+    }
 }
