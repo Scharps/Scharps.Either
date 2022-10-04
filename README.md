@@ -12,7 +12,7 @@ if (successfulResult.Value is string s)
 {
     System.Console.WriteLine(s);
 }
-else if (successfulResult.Error is Error e)
+else if (successfulResult.Error is IError e)
 {
     System.Console.WriteLine(e.Message);
 }
